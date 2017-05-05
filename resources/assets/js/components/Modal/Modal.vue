@@ -1,5 +1,5 @@
 <template>
-    <vodal :show="show" :height=270   animation="rotate" @hide="show = false">
+    <vodal :show="show" :height=270 :width="500" animation="rotate" @hide="show = false">
         <div style="padding-top: 30px">
             <div class="ivu-row">
                 <div class="ivu-col ivu-col-span-24" style="padding-left: 4px; padding-right: 4px;">
@@ -20,7 +20,8 @@
             </div>
             <br/>
             <div class="ivu-row">
-                <button v-on:click="submit" type="button" class="ivu-btn ivu-btn-success ivu-btn-long"><!----> <!----> <span>Start Writing Minutes</span>
+                <button v-on:click="submit" type="button" class="ivu-btn ivu-btn-success ivu-btn-long"><!----> <!---->
+                    <span>Start Writing Minutes</span>
                 </button>
             </div>
             <br/>
@@ -50,8 +51,17 @@
         },
         methods: {
             submit: function () {
-                this.show = false;
-                this.$emit('input',{title:this.title,location:this.location})
+                var x = this;
+                axios.post('/api/meeting', {
+                    meetingTitle: x.title
+                }).then(function (response) {
+                    x.show = false;
+                    console.log(response.data)
+                    x.$emit('input', response.data)
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
             }
         }
 

@@ -12,12 +12,14 @@ class Minute extends Model
         'agenda' => 'array',
         'attendants' => 'array',
         'recording_filenames' => 'array',
+
     ];
 
     protected $fillable = [
         'recording_filenames',
         'minutes',
         'agenda',
-        'attendants'
+        'attendants',
+        'meetingId'
     ];
 }

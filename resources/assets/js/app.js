@@ -8,7 +8,7 @@
 require('./bootstrap');
 
 
-import 'iview/dist/styles/iview.css';
+
 import "vodal/fade.css";
 import "vodal/rotate.css";
 import Vodal from 'vodal';

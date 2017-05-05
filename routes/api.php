@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('minutes','MinuteController@store');
+Route::post('meeting','MeetingController@store');

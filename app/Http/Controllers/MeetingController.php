@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Minute;
+use App\Meeting;
 use Illuminate\Http\Request;
 
-class MinuteController extends Controller
+class MeetingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,14 +35,7 @@ class MinuteController extends Controller
      */
     public function store(Request $request)
     {
-        return Minute::updateOrCreate(array('meetingId' => $request->meetingId),
-            array(
-                'minutes' => $request->minutes,
-                'agenda' => $request->agenda,
-                'attendants' => $request->attendants,
-                'meetingId' => $request->meetingId
-            ));
-
+        return Meeting::create($request->all());
     }
 
     /**

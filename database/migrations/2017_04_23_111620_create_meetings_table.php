@@ -17,8 +17,6 @@ class CreateMeetingsTable extends Migration
             $table->increments('id');
             $table->string('meetingTitle')->nullable();
             $table->date('meetingDate')->nullable();
-            $table->time('startTime')->nullable();
-            $table->time('endTime')->nullable();
             $table->text('hash')->nullable();
             $table->timestamps();
         });

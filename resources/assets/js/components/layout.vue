@@ -20,7 +20,7 @@
     import Agenda from './Agenda/Agenda.vue'
     import Minute from './Minute/Minute.vue'
     export default {
-        props: ['title', 'location'],
+        props: ['meeting_id'],
         components: {
             Attendant,
             Agenda,
@@ -46,12 +46,10 @@
         methods: {
             attendantAdded: function ($attendants) {
                 this.attendants = $attendants;
-            }
-            ,
+            },
             minuteChanged: function (minutes) {
                 this.minutes = minutes;
-            }
-            ,
+            },
             agendaUpdated: function (agenda) {
                 this.agenda = agenda
             },
@@ -66,19 +64,34 @@
                 this.editing_minute = null
                 this.filename = null
                 this.saving = 1
+            },
+            saveMinutes: function () {
+                var x = this;
+                axios.post('/api/minutes', {
+                    meetingId: x.meeting_id,
+                    agenda: x.agenda,
+                    attendants: x.attendants,
+                    minutes: x.minutes
+                }).then(function (response) {
+                    x.show = false;
+                    console.log(response.data)
+                    x.$emit('input', response.data)
+                }).catch(function (error) {
+                    console.log(error);
+                });
             }
         },
         watch: {
             attendants: function () {
-
+                this.saveMinutes();
 
             },
             minutes: function () {
-
+                this.saveMinutes();
 
             },
             agenda: function () {
-
+                this.saveMinutes();
             },
             filename: function () {
 

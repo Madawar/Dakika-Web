@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="app">
-    <layout :title="meeting.title" :location="meeting.location"></layout>
+    <layout :meeting_id="meeting.id"></layout>
     <modal v-model="meeting"></modal>
 </div>
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
