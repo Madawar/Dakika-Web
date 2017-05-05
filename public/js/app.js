@@ -18617,6 +18617,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['saved_minutes', 'attendants', 'saved_agendas', 'filename'],
@@ -18624,10 +18628,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             show: true,
             title: '',
-            location: ''
+            location: '',
+            newM: true,
+            open: false,
+            isActive: 'active'
         };
     },
     methods: {
+        toggleView: function toggleView(variable) {
+            if (variable === "open") {
+                if (this.open === true) {
+                    return;
+                }
+            }
+            if (variable === "newM") {
+                if (this.newM === true) {
+                    return;
+                }
+            }
+            this.newM = !this.newM;
+            this.open = !this.open;
+        },
         submit: function submit() {
             var x = this;
             axios.post('/api/meeting', {
@@ -18744,7 +18765,7 @@ exports.push([module.i, "\n.vodal,\n.vodal-mask {\n    top: 0;\n    left: 0;\n  
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.heading[data-v-64c28fb6] {\n    padding: 20px;\n    cursor: pointer;\n}\n.active[data-v-64c28fb6] {\n    color: darkblue;\n    text-shadow: -2px 0px 17px rgba(94, 150, 150, 1);\n}\n.fade-enter-active[data-v-64c28fb6], .fade-leave-active[data-v-64c28fb6] {\n    transition: opacity .5s\n}\n.fade-enter[data-v-64c28fb6], .fade-leave-to[data-v-64c28fb6] /* .fade-leave-active in <2.1.8 */\n{\n    opacity: 0\n}\n", ""]);
 
 /***/ }),
 /* 168 */
@@ -37057,9 +37078,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('vodal', {
     attrs: {
       "show": _vm.show,
-      "height": 270,
+      "height": 320,
       "width": 500,
-      "animation": "rotate"
+      "animation": "door"
     },
     on: {
       "hide": function($event) {
@@ -37067,6 +37088,43 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_c('div', {
+    staticStyle: {
+      "padding": "10px",
+      "text-align": "center"
+    }
+  }, [_c('span', {
+    staticClass: "heading",
+    class: {
+      active: _vm.newM
+    },
+    on: {
+      "click": function($event) {
+        _vm.toggleView('newM')
+      }
+    }
+  }, [_vm._v("New Meeting")]), _vm._v(" "), _c('span', {
+    staticClass: "heading",
+    class: {
+      active: _vm.open
+    },
+    on: {
+      "click": function($event) {
+        _vm.toggleView('open')
+      }
+    }
+  }, [_vm._v("Open Previous Meetings")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('transition', {
+    attrs: {
+      "name": "fade"
+    }
+  }, [(_vm.open) ? _c('div', {
+    staticStyle: {
+      "padding-top": "30px"
+    }
+  }, [_vm._v("\n            Old\n        ")]) : _vm._e()]), _vm._v(" "), _c('transition', {
+    attrs: {
+      "name": "fade"
+    }
+  }, [(_vm.newM) ? _c('div', {
     staticStyle: {
       "padding-top": "30px"
     }
@@ -37146,15 +37204,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.submit
     }
-  }, [_c('span', [_vm._v("Start Writing Minutes")])])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
-    staticClass: "ivu-row"
-  }, [_c('div', {
-    staticClass: "ivu-alert ivu-alert-warning"
-  }, [_c('span', {
-    staticClass: "ivu-alert-message"
-  }, [_vm._v("\n            All your Meeting Minutes will be saved to local storage until you register and log in!!!\n           "), _c('br'), _vm._v(" Syncing with Evernote and OneNote is also disabled\n        ")]), _vm._v(" "), _c('span', {
-    staticClass: "ivu-alert-desc"
-  })])])])])
+  }, [_c('span', [_vm._v("Start Writing Minutes")])])])]) : _vm._e()])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

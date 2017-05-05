@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('css/app.css')}}" type="text/css" media="all"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css" media="all"/>
-    <title>Laravel</title>
+    <title>Dakika</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
