@@ -19,3 +19,7 @@ Route::get('/meeting', function () {
     return view('meeting');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
