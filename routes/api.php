@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('minutes','MinuteController@store');
-Route::post('meeting','MeetingController@store');
+Route::post('minutes','MinuteController@store')->middleware('auth:api');;
+Route::post('meeting','MeetingController@store')->middleware('auth:api');;
